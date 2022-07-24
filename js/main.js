@@ -134,8 +134,12 @@ $(document).ready(function(){
           let getElementHours = $(`#example-pickers .picker-scroller > .option`);
           if(getContentHours === s){
             getElementHours.removeClass('font-style-timepicker');
+            getElementHours.removeClass('f-14');
+            getElementHours.removeClass('f-16');
             getElementHours.css('opacity', '0.5');
             getElementsHour.addClass('font-style-timepicker');
+            $(`#example-pickers .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
+            $(`#example-pickers .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
           }
         });
       }
@@ -175,7 +179,7 @@ $(document).ready(function(){
   $(".btn-save").click( () => {
     choiseDate();
     $('#input-date').val(`${arrDateTime[0]} : ${arrDateTime[1]} - ${arrDateTime[2]} / ${arrDateTime[3]} / ${arrDateTime[4]} / ${arrDateTime[5]}`);
-    setTimeout($('.container-calendar').css('display', 'none'),2000);
+    $('.container-calendar').css('display', 'none');
   });
 
 

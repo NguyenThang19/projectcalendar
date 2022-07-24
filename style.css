@@ -192,7 +192,6 @@ span.position-absolute{
     opacity: 0.2;
 }
 
-
 /* Time Section */
 .font-style-timepicker{
     font-weight: 700 !important;
@@ -200,6 +199,13 @@ span.position-absolute{
     opacity: 1 !important;
 }
 
+.f-14{
+    font-size: 14px !important;
+}
+
+.f-16{
+    font-size: 16px;
+}
 
 .picker-scroller::-webkit-scrollbar{
     width:0 !important;
