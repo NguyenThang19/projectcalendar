@@ -115,8 +115,10 @@ $(document).ready(function(){
           let getElementHours = $(`#example-picker > .picker-scroller > .option`);
           if(getContentHours === s){
             getElementHours.removeClass('font-style-timepicker');
+            getElementHours.removeClass('f-14');
             getElementHours.css('opacity', '0.5');
             getElementsHour.addClass('font-style-timepicker');
+            $(`#example-picker .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
           }
         });    
         
@@ -135,10 +137,8 @@ $(document).ready(function(){
           if(getContentHours === s){
             getElementHours.removeClass('font-style-timepicker');
             getElementHours.removeClass('f-14');
-            getElementHours.removeClass('f-16');
             getElementHours.css('opacity', '0.5');
             getElementsHour.addClass('font-style-timepicker');
-            $(`#example-pickers .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
             $(`#example-pickers .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
           }
         });
