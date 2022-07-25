@@ -23,7 +23,7 @@
 }
 
 .calendar-section{
-    height:70%;
+    height:max-content;
     overflow-y: auto;
     bottom: 0;
     border-top: 1px solid #ccc;
