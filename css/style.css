@@ -5,6 +5,7 @@
     font-family: 'SFU Futura';
     font-size: 15px;
     font-weight: 400;
+    color: #000000;
 }
 
 .container-calendar{
@@ -29,7 +30,7 @@
     background-clip: border-box;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-size: 116%;
+    /* background-size: 116%; */
 }
 
 
@@ -90,7 +91,6 @@
 
 .btn-save{
     background-color: #4D5DFA;
-    color: #FFFFFF;
     width: 350px;
     height: 67px;
     margin: auto;
@@ -102,6 +102,7 @@
 .btn-save > span{
     font-size: 20px;
     font-weight: 900;
+    color: #F2F2F3 !important;
 }
 
 .pick-calendar{
@@ -123,7 +124,6 @@
 }
 .to-day{
     background-color: rgb(76, 93, 250, 0.2);
-    color: #000000;
     border-radius: 50%;
 }
 
@@ -142,12 +142,10 @@ span.position-absolute{
 
 .prev-month{
     left: 3.74%;
-    color: #000000;
 }
 
 .next-month{
     right: 3.74%;
-    color: #000000;
 }
 
 /* Style Calendar Body */
@@ -183,12 +181,10 @@ span.position-absolute{
 }
 
 .calendar-body .calendar-days > .prev-days{
-    color: #000000;
     opacity: 0.2;
 }
 
 .calendar-body .calendar-days > .next-days{
-    color: #000000;
     opacity: 0.2;
 }
 
