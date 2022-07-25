@@ -170,7 +170,7 @@ $(document).ready(function(){
   $("#input-date").click( function (event){
     $("#input-date").val("");
     $('.container-calendar').css('display','block');
-    $('.calendar-section').slideDown(() => {$('.container-calendar').css('display', 'block')});
+    $('.calendar-section').slideDown("slow",() => {$('.container-calendar').css('display', 'block')});
 
     resetCalendar();
     generateCalendar();
@@ -180,13 +180,13 @@ $(document).ready(function(){
   $(".btn-save").click( () => {
     choiseDate();
     $('#input-date').val(`${arrDateTime[0]} : ${arrDateTime[1]} - ${arrDateTime[2]} / ${arrDateTime[3]} / ${arrDateTime[4]} / ${arrDateTime[5]}`);
-    $('.calendar-section').slideUp(() => {$('.container-calendar').css('display', 'none')});
+    $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
   });
 
   // Bubbling Event
   $('.container-calendar').click( () => {
     // $('.calendar-section').css('animation', 'movehidecalendarsection 0.4s ease');
-    $('.calendar-section').slideUp(() => {$('.container-calendar').css('display', 'none')});
+    $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
   } );
 
   $('.calendar-section').click( (event) => {
@@ -195,6 +195,6 @@ $(document).ready(function(){
 
   // Button Close
   $('.btn-close').click( () => {
-    $('.container-calendar').css('display','none');
+    $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
   } )
 })
