@@ -56,13 +56,13 @@ $(document).ready(function(){
   };
   
   // To Prev Month
-  $('.prev-month').click( () => {
+  $('.icon-prev-month').click( () => {
       date.setMonth(date.getMonth()-1);
       generateCalendar();
   });
 
   // To Next Month
-  $('.next-month').click( () => {
+  $('.icon-next-month').click( () => {
       date.setMonth(date.getMonth()+1);
       generateCalendar();
   });
@@ -190,4 +190,9 @@ $(document).ready(function(){
   $('.calendar-section').click( (event) => {
     event.stopPropagation();
   });
+
+  // Button Close
+  $('.btn-close').click( () => {
+    $('.container-calendar').css('display','none');
+  } )
 })

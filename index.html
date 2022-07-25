@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./css/style.css">
     <title>Calendar</title>
 </head>
@@ -26,18 +26,28 @@
                 <label for="date-input" id="label-date-input">Ngày</label>
                 <input type="text" id="date-input" name="date-input">
             </div>
+            <div class="row mx-0 btn-close">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 1L1 11" stroke="#010101" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11 11L1 1" stroke="#010101" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                    
+            </div>
             <div class="row mx-0 content-calendar">
                 <div class="col-sm-12 px-0 date-of-calendar">
                     <div class="pick-calendar">
                         <div class="calendar-heading position-relative">
-                            <div class="prev-month position-absolute">
-                                <i class="fa-solid fa-angle-left"></i>
+                            <div class="icon-prev-month position-absolute">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.90872 6.5L8 11.5558L6.54564 13L0 6.5L6.54564 0L8 1.44422L2.90872 6.5Z" fill="black"/>
+                                </svg>                                                                        
                             </div>
                             <div class="calendar-month-years">
                                 Tháng <span class="month"></span> - <span class="year"></span>
                             </div>
-                            <div class="next-month position-absolute">
-                                <i class="fa-solid fa-angle-right"></i>
+                            <div class="icon-next-month position-absolute">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.09128 6.5L0 11.5558L1.45436 13L8 6.5L1.45436 0L0 1.44422L5.09128 6.5Z" fill="black"/>
+                                </svg>                                                                     
                             </div>
                         </div>
                         <div class="calendar-body">

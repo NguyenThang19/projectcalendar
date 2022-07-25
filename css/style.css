@@ -105,6 +105,13 @@
     color: #F2F2F3 !important;
 }
 
+.btn-close{
+    position: absolute;
+    top: 21px;
+    right: 24px;
+    cursor: pointer;
+}
+
 .pick-calendar{
     width: 100%;
     display: block;
@@ -140,12 +147,14 @@ span.position-absolute{
 }
 
 
-.prev-month{
-    left: 3.74%;
+.icon-prev-month{
+    left: 16px;
+    bottom: 14px;
 }
 
-.next-month{
-    right: 3.74%;
+.icon-next-month{
+    right: 16px;
+    bottom: 14px;
 }
 
 /* Style Calendar Body */
