@@ -178,7 +178,8 @@ span.position-absolute{
 .calendar-body .calendar-days{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    min-height: 230px;
+    max-height: 230px;
+    padding-bottom: 40px;
     gap: 10px;
     text-align: center;
     font-weight: normal;
