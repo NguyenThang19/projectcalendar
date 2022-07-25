@@ -74,7 +74,6 @@ $(document).ready(function(){
       let minutes = "";
       let setHours = [];
       let setMinutes = [];
-  
       // Set time 
       function setHour (){
         for(let i = 0; i < 24; i++){
@@ -94,6 +93,8 @@ $(document).ready(function(){
   
       setHour();
       setMinute();
+
+      // Update time
       const updateTime = () => {
         // Current hour
       let curHour = date.getHours();
@@ -145,7 +146,6 @@ $(document).ready(function(){
       }
       updateTime();
     }
-
   // Reset Calendar
   function resetCalendar(){
     $('.calendar-days > div.to-day').removeClass("to-day");
@@ -182,9 +182,7 @@ $(document).ready(function(){
     $('.container-calendar').css('display', 'none');
   });
 
-
-
-  // Bullbing Events
+  // Bubbling Event
   $('.container-calendar').click( () => {
     $('.container-calendar').css('display', 'none');
   } );

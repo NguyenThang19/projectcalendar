@@ -1,6 +1,8 @@
 @font-face {
     font-family: 'SFU Futura';
     src: url("./fonts/SFU\ Futura\ Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
 }
 *{
     padding: 0;
@@ -21,7 +23,7 @@
 }
 
 .calendar-section{
-    height: 90%;
+    height: 70%;
     overflow-y: auto;
     bottom: 0;
     border-top: 1px solid #ccc;
