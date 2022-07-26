@@ -2,9 +2,26 @@ $(document).ready(function(){
   //Get Current Date, Month, Year and day
   let date = new Date();
   let arrDateTime = [];
+  let arrValueForDateInPut = [];
   // Month Array
   const arrMonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const arrWeeks = ['Chủ Nhật','Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+
+  // Function for value date input section 
+    const setValueDateInput = () => {
+      let dayChoise = $('.calendar-days > .to-day').html();
+      let monthChoise = $('.calendar-month-years > .month').html();
+      let yearChoise = $('.calendar-month-years > .year').html();
+      let weekDayChoise = arrWeeks[new Date(yearChoise, monthChoise - 1, dayChoise).getDay()];
+      arrValueForDateInPut[2] = weekDayChoise;
+      arrValueForDateInPut[3] = dayChoise;
+      arrValueForDateInPut[4] = monthChoise;
+      arrValueForDateInPut[5] = yearChoise;
+    }
+
+    const fellValueForDateInput = () => {
+    $('#date-input').val(`${arrValueForDateInPut[0]}:${arrValueForDateInPut[1]} - ${arrValueForDateInPut[2]}  ${arrValueForDateInPut[3]} / ${arrValueForDateInPut[4]} / ${arrValueForDateInPut[5]}`);
+    }
 
   // Function Generate Calendar
   const generateCalendar = () => {
@@ -52,9 +69,11 @@ $(document).ready(function(){
       $('.calendar-days div').click( function () {
         $('.calendar-days > div.to-day').removeClass("to-day");
         $(this).addClass('to-day');
+        setValueDateInput();
+        fellValueForDateInput();
       })
   };
-  
+
   // To Prev Month
   $('.icon-prev-month').click( () => {
       date.setMonth(date.getMonth()-1);
@@ -121,6 +140,8 @@ $(document).ready(function(){
             getElementsHour.addClass('font-style-timepicker');
             $(`#example-picker .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
           }
+          arrValueForDateInPut[0] = s;
+          fellValueForDateInput();
         });    
         
       //   Minute
@@ -142,6 +163,9 @@ $(document).ready(function(){
             getElementsHour.addClass('font-style-timepicker');
             $(`#example-pickers .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
           }
+
+          arrValueForDateInPut[1] = s;
+          fellValueForDateInput();
         });
       }
       updateTime();
@@ -153,6 +177,8 @@ $(document).ready(function(){
   }
 
   timPicker();
+
+
   // Choise Day
   function choiseDate(){
     let dayChoise = $('.calendar-days > .to-day').html();
@@ -163,11 +189,18 @@ $(document).ready(function(){
     arrDateTime[3] = dayChoise;
     arrDateTime[4] = monthChoise;
     arrDateTime[5] = yearChoise;
+
+    arrValueForDateInPut[2] = weekDayChoise;
+    arrValueForDateInPut[3] = dayChoise;
+    arrValueForDateInPut[4] = monthChoise;
+    arrValueForDateInPut[5] = yearChoise;
   }
 
   // Form Input Click
   $("#input-date").click( function (event){
     $("#input-date").val("");
+    choiseDate();
+    fellValueForDateInput();
     $('.container-calendar').css('display','block');
     $('.calendar-section').slideDown("slow",() => {$('.container-calendar').css('display', 'block')});
     $("#input-date").blur();
@@ -178,7 +211,7 @@ $(document).ready(function(){
   // Event Button Save
   $(".btn-save").click( () => {
     choiseDate();
-    $('#input-date').val(`${arrDateTime[0]} : ${arrDateTime[1]} - ${arrDateTime[2]} / ${arrDateTime[3]} / ${arrDateTime[4]} / ${arrDateTime[5]}`);
+    $('#input-date').val(`${arrDateTime[0]}:${arrDateTime[1]} - ${arrDateTime[2]}  ${arrDateTime[3]} / ${arrDateTime[4]} / ${arrDateTime[5]}`);
     $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
   });
 
