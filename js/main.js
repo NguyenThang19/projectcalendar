@@ -189,20 +189,15 @@ $(document).ready(function(){
     arrDateTime[3] = dayChoise;
     arrDateTime[4] = monthChoise;
     arrDateTime[5] = yearChoise;
-
-    arrValueForDateInPut[2] = weekDayChoise;
-    arrValueForDateInPut[3] = dayChoise;
-    arrValueForDateInPut[4] = monthChoise;
-    arrValueForDateInPut[5] = yearChoise;
   }
 
   // Form Input Click
   $("#input-date").click( function (event){
     $("#input-date").val("");
-    choiseDate();
+    setValueDateInput();
     fellValueForDateInput();
     $('.container-calendar').css('display','block');
-    $('.calendar-section').slideDown("slow",() => {$('.container-calendar').css('display', 'block')});
+      $('.calendar-section').slideDown("slow");
     $("#input-date").blur();
     resetCalendar();
     generateCalendar();
@@ -212,13 +207,18 @@ $(document).ready(function(){
   $(".btn-save").click( () => {
     choiseDate();
     $('#input-date').val(`${arrDateTime[0]}:${arrDateTime[1]} - ${arrDateTime[2]}  ${arrDateTime[3]} / ${arrDateTime[4]} / ${arrDateTime[5]}`);
-    $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
+    $('.calendar-section').slideUp("slow");
+    setTimeout(() => {
+      $('.container-calendar').css('display','none');
+    }, 400);
   });
 
   // Bubbling Event
   $('.container-calendar').click( () => {
-    // $('.calendar-section').css('animation', 'movehidecalendarsection 0.4s ease');
-    $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
+    $('.calendar-section').slideUp("slow");
+    setTimeout(() => {
+      $('.container-calendar').css('display','none');
+    }, 400);
   } );
 
   $('.calendar-section').click( (event) => {
