@@ -153,7 +153,6 @@ $(document).ready(function(){
   }
 
   timPicker();
-
   // Choise Day
   function choiseDate(){
     let dayChoise = $('.calendar-days > .to-day').html();
@@ -171,7 +170,7 @@ $(document).ready(function(){
     $("#input-date").val("");
     $('.container-calendar').css('display','block');
     $('.calendar-section').slideDown("slow",() => {$('.container-calendar').css('display', 'block')});
-
+    $("#input-date").blur();
     resetCalendar();
     generateCalendar();
     timPicker();
