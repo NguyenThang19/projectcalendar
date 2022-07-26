@@ -32,6 +32,10 @@
     background-size: 120%;
 }
 
+.calendar-section::-webkit-scrollbar{
+    width: 0px;
+}
+
 .content-calendar{
     margin-top: 24px;
 }
