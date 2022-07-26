@@ -29,8 +29,7 @@
     background-position:  bottom center;
     background-clip: border-box;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 112%;
+    background-size: 120%;
 }
 
 
@@ -110,6 +109,8 @@
     top: 21px;
     right: 24px;
     cursor: pointer;
+    color: #010101 !important;
+    opacity: 0.8 !important;
 }
 
 .pick-calendar{
@@ -192,10 +193,12 @@ span.position-absolute{
 
 .calendar-body .calendar-days > .prev-days{
     opacity: 0.2;
+    pointer-events: none;
 }
 
 .calendar-body .calendar-days > .next-days{
     opacity: 0.2;
+    pointer-events: none;
 }
 
 /* Time Section */
