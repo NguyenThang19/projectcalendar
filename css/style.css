@@ -32,25 +32,6 @@
     background-size: 120%;
 }
 
-
-@keyframes moveshowcalendarsection {
-    from{
-        transform: translateY(100%);
-    }
-    to{
-        transform: translateY(0);
-    }
-}
-
-@keyframes movehidencalendarsection {
-    from {
-        transform: translateY(0);
-    }
-    to{
-        transform: translateY(100%);
-    }
-}
-
 .content-calendar{
     margin-top: 24px;
 }
