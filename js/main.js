@@ -65,7 +65,7 @@ $(document).ready(function(){
           $('.calendar-days').html(days);
       };
 
-      // Choise Day
+      // Set To Day
       $('.calendar-days div').click( function () {
         $('.calendar-days > div.to-day').removeClass("to-day");
         $(this).addClass('to-day');
@@ -75,15 +75,17 @@ $(document).ready(function(){
   };
 
   // To Prev Month
-  $('.icon-prev-month').click( () => {
-      date.setMonth(date.getMonth()-1);
-      generateCalendar();
-  });
+  document.querySelector('.icon-prev-month').addEventListener('click', () => {
+    date.setMonth(date.getMonth()-1);
+    generateCalendar();
+    setMinDate();
+    })
 
   // To Next Month
   $('.icon-next-month').click( () => {
       date.setMonth(date.getMonth()+1);
       generateCalendar();
+      setMinDate();
   });
   generateCalendar();
 
@@ -191,17 +193,37 @@ $(document).ready(function(){
     arrDateTime[5] = yearChoise;
   }
 
+
+  // Set Min Date 
+  const setMinDate = () => {
+    let nodeListDay = $('.calendar-days > div');
+    let nodeListPrevDay = $('.calendar-days > div.prev-days');
+    let nodeListNextDay = $('.calendar-days > div.next-days');
+    let months = $('.calendar-month-years > span.month').html();
+    let years = $('.calendar-month-years > span.year').html();
+    if(parseInt(years) === new Date().getFullYear() && parseInt(months -1) === new Date().getMonth())
+    {
+      for(let i = (nodeListPrevDay.length); i < (nodeListDay.length - nodeListPrevDay.length - nodeListNextDay.length); i++){
+        let valueNodeItem = nodeListDay[i].innerText;
+        if(parseInt(valueNodeItem) < new Date().getDate()){
+          nodeListDay[i].classList.add('disable-day');
+        }
+      }
+    }
+}
+
   // Form Input Click
   $("#input-date").click( function (event){
     $("#input-date").val("");
     setValueDateInput();
     fellValueForDateInput();
     $('.container-calendar').css('display','block');
-      $('.calendar-section').slideDown("slow");
+    $('.calendar-section').slideDown("slow");
     $("#input-date").blur();
     resetCalendar();
     generateCalendar();
     timPicker();
+    setMinDate();
   });
   // Event Button Save
   $(".btn-save").click( () => {
@@ -215,6 +237,7 @@ $(document).ready(function(){
 
   // Bubbling Event
   $('.container-calendar').click( () => {
+    
     $('.calendar-section').slideUp("slow");
     setTimeout(() => {
       $('.container-calendar').css('display','none');
@@ -229,4 +252,5 @@ $(document).ready(function(){
   $('.btn-close').click( () => {
     $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
   } )
+
 })
