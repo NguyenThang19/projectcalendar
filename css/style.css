@@ -19,7 +19,7 @@
 }
 
 .calendar-section{
-    height: 80%;
+    height: calc(100% - 142px);
     overflow-y: auto;
     bottom: 0;
     border-top: 1px solid #ccc;
@@ -30,12 +30,30 @@
     background-clip: border-box;
     background-repeat: no-repeat;
     background-size: 120%;
+    background-attachment: scroll;
+}
+
+@keyframes moveshowcalendarsection {
+    from{
+        transform: translateY(100%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+@keyframes movehidencalendarsection {
+    from {
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(100%);
+    }
 }
 
 .calendar-section::-webkit-scrollbar{
-    width: 0px;
+    width: 0;
 }
-
 .content-calendar{
     margin-top: 24px;
 }
@@ -134,13 +152,15 @@ span.position-absolute{
 
 
 .icon-prev-month{
-    left: 16px;
-    bottom: 14px;
+    padding: 8px 24px 8px 24px;
+    left: 0;
+    top: 0;
 }
 
 .icon-next-month{
-    right: 16px;
-    bottom: 14px;
+    right: 0;
+    top: 0;
+    padding: 8px 24px 8px 24px;
 }
 
 /* Style Calendar Body */
@@ -184,6 +204,10 @@ span.position-absolute{
 .calendar-body .calendar-days > .next-days{
     opacity: 0.2;
     pointer-events: none;
+}
+
+.disable-day{
+    pointer-events: none !important;
 }
 
 /* Time Section */
