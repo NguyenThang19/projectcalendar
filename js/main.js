@@ -75,17 +75,24 @@ $(document).ready(function(){
   };
 
   // To Prev Month
-  document.querySelector('.icon-prev-month').addEventListener('click', () => {
-    date.setMonth(date.getMonth()-1);
-    generateCalendar();
-    setMinDate();
-    })
-
+  $('.icon-prev-month').click( () => {
+    let prev = parseInt($('.calendar-month-years > span.month').html());
+    let now = new Date().getMonth();
+    if( prev > now+1 ){
+      date.setMonth(date.getMonth()-1);
+      generateCalendar();
+      setMinDate();
+    }else{
+      generateCalendar();
+      $('.calendar-heading > .icon-prev-month').css('opacity','0.2');
+    }
+});
   // To Next Month
   $('.icon-next-month').click( () => {
       date.setMonth(date.getMonth()+1);
       generateCalendar();
       setMinDate();
+      $('.calendar-heading > .icon-prev-month').css('opacity','1');
   });
   generateCalendar();
 
@@ -118,68 +125,66 @@ $(document).ready(function(){
       // Update time
       const updateTime = () => {
         // Current hour
-      let curHour = date.getHours();
+        let curHour = date.getHours();
 
-      // Current Minutes
-      let curMinute=date.getMinutes();
-      // Pick Time
-      // Hour
-      $("#example-picker").picker({
-          data: setHours,
-          lineHeight: 30,
-          selected: curHour
-        }, function (s) {
-          hours = `${s}`;
-          arrDateTime[0] = hours;
-          $(".example-picker").data("value", s);
-          let getContentHours = $(`#example-picker > .picker-scroller > .option:nth(${s})`).html();
-          let getElementsHour = $(`#example-picker > .picker-scroller > .option:nth(${s})`);
-          let getElementHours = $(`#example-picker > .picker-scroller > .option`);
-          if(getContentHours === s){
-            getElementHours.removeClass('font-style-timepicker');
-            getElementHours.removeClass('f-14');
-            getElementHours.css('opacity', '0.5');
-            getElementsHour.addClass('font-style-timepicker');
-            $(`#example-picker .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
-          }
-          arrValueForDateInPut[0] = s;
-          fellValueForDateInput();
-        });    
-        
-      //   Minute
-        $("#example-pickers").picker({
-          data: setMinutes,
-          lineHeight: 30,
-          selected: curMinute
-        }, function (s) {
-          minutes = `${s}`;
-          arrDateTime[1] = minutes;
-          $(".example-pickers").data("value", s);
-          let getContentHours = $(`#example-pickers .picker-scroller > .option:nth(${s})`).html();
-          let getElementsHour = $(`#example-pickers .picker-scroller > .option:nth(${s})`);
-          let getElementHours = $(`#example-pickers .picker-scroller > .option`);
-          if(getContentHours === s){
-            getElementHours.removeClass('font-style-timepicker');
-            getElementHours.removeClass('f-14');
-            getElementHours.css('opacity', '0.5');
-            getElementsHour.addClass('font-style-timepicker');
-            $(`#example-pickers .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
-          }
-
-          arrValueForDateInPut[1] = s;
-          fellValueForDateInput();
-        });
+        // Current Minutes
+        let curMinute=date.getMinutes();
+        // Pick Time
+        // Hour
+        $("#example-picker").picker({
+            data: setHours,
+            lineHeight: 30,
+            selected: curHour
+          }, function (s) {
+            hours = `${s}`;
+            arrDateTime[0] = hours;
+            $(".example-picker").data("value", s);
+            let getContentHours = $(`#example-picker > .picker-scroller > .option:nth(${s})`).html();
+            let getElementsHour = $(`#example-picker > .picker-scroller > .option:nth(${s})`);
+            let getElementHours = $(`#example-picker > .picker-scroller > .option`);
+            if(s === getContentHours){
+              getElementHours.removeClass('font-style-timepicker');
+              getElementHours.removeClass('f-14');
+              getElementHours.css('opacity', '0.5');
+              getElementsHour.addClass('font-style-timepicker');
+              $(`#example-picker .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
+            }
+            arrValueForDateInPut[0] = s;
+            fellValueForDateInput();
+          });    
+          
+        //   Minute
+          $("#example-pickers").picker({
+            data: setMinutes,
+            lineHeight: 30,
+            selected: curMinute
+          }, function (s) {
+            minutes = `${s}`;
+            arrDateTime[1] = minutes;
+            $(".example-pickers").data("value", s);
+            let getContentHours = $(`#example-pickers .picker-scroller > .option:nth(${s})`).html();
+            let getElementsHour = $(`#example-pickers .picker-scroller > .option:nth(${s})`);
+            let getElementHours = $(`#example-pickers .picker-scroller > .option`);
+            if(getContentHours === s){
+              getElementHours.removeClass('font-style-timepicker');
+              getElementHours.removeClass('f-14');
+              getElementHours.css('opacity', '0.5');
+              getElementsHour.addClass('font-style-timepicker');
+              $(`#example-pickers .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
+            }
+            arrValueForDateInPut[1] = s;
+            fellValueForDateInput();
+          });
       }
       updateTime();
     }
+   timPicker();
+
   // Reset Calendar
   function resetCalendar(){
     $('.calendar-days > div.to-day').removeClass("to-day");
     $('.calendar-days').find(".curr-Day").addClass("to-day");
   }
-
-  timPicker();
-
 
   // Choise Day
   function choiseDate(){
