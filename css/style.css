@@ -209,6 +209,7 @@ span.position-absolute{
 
 .disable-day{
     pointer-events: none !important;
+    opacity: 0.2;
 }
 
 /* Time Section */
