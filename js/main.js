@@ -84,6 +84,7 @@ $(document).ready(function(){
       setMinDate();
     }else{
       generateCalendar();
+      setMinDate();
       $('.calendar-heading > .icon-prev-month').css('opacity','0.2');
     }
 });
