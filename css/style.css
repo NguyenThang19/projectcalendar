@@ -9,7 +9,7 @@
 }
 
 .container-calendar{
-    display: none;
+    visibility: hidden;
     position: fixed;
     top: 0;
     right: 0;
@@ -31,24 +31,6 @@
     background-repeat: no-repeat;
     background-size: 120%;
     background-attachment: scroll;
-}
-
-@keyframes moveshowcalendarsection {
-    from{
-        transform: translateY(100%);
-    }
-    to{
-        transform: translateY(0);
-    }
-}
-
-@keyframes movehidencalendarsection {
-    from {
-        transform: translateY(0);
-    }
-    to{
-        transform: translateY(100%);
-    }
 }
 
 .calendar-section::-webkit-scrollbar{
