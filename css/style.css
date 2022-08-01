@@ -19,6 +19,8 @@
 }
 
 .calendar-section{
+    display: none;
+    z-index: 3;
     height: calc(100% - 142px);
     overflow-y: auto;
     bottom: 0;
