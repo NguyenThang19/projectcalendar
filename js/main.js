@@ -271,8 +271,8 @@ $(document).ready(function(){
   // Form Input Click
   $("#input-date").click( function (event){
     $("#input-date").val("");
-    $('.container-calendar').css('visibility','visible');
     $('.calendar-section').slideDown("slow");
+    $('.container-calendar').css('visibility','visible');
     $("#input-date").blur();
     setValueDateInput();
     fellValueForDateInput();
@@ -306,8 +306,8 @@ $(document).ready(function(){
 
   // Button Close
   $('.btn-close').click( () => {
-    $('.calendar-section').slideUp("slow",() => {    $('.container-calendar').css('visibility','hidden');
-  });
+    $('.calendar-section').slideUp("slow");
+    $('.container-calendar').css('visibility','hidden');
   });
 
 })
