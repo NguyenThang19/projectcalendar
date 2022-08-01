@@ -76,12 +76,19 @@ $(document).ready(function(){
 
   // To Prev Month
   $('.icon-prev-month').click( () => {
-    let prev = parseInt($('.calendar-month-years > span.month').html());
-    let now = new Date().getMonth();
-    if( prev > now+1 ){
+    let prevMonth = parseInt($('.calendar-month-years > span.month').html());
+    let nextYear = parseInt($('.calendar-month-years > span.year').html());
+    let presentMonth = new Date().getMonth();
+    let presentYear = new Date().getFullYear();
+    if( prevMonth > (presentMonth + 1) ){
       date.setMonth(date.getMonth()-1);
       generateCalendar();
       setMinDate();
+    }else if (presentYear < nextYear){
+      date.setMonth(date.getMonth() - 1);
+      generateCalendar();
+      setMinDate();
+      $('.calendar-heading > .icon-prev-month').css('opacity','1');
     }else{
       generateCalendar();
       setMinDate();
@@ -119,17 +126,17 @@ $(document).ready(function(){
           setMinutes.push(i);
         }
       };
-  
+
+      // Current hour
+      let curHour = new Date().getHours();
+
+      // Current Minutes
+      let curMinute=new Date().getMinutes();
       setHour();
       setMinute();
 
       // Update time
       const updateTime = () => {
-        // Current hour
-        let curHour = date.getHours();
-
-        // Current Minutes
-        let curMinute=date.getMinutes();
         // Pick Time
         // Hour
         $("#example-picker").picker({
@@ -213,19 +220,62 @@ $(document).ready(function(){
         let valueNodeItem = nodeListDay[i].innerText;
         if(parseInt(valueNodeItem) < new Date().getDate()){
           nodeListDay[i].classList.add('disable-day');
+          }
+        }
+      }
+  }
+
+  // Touch Events Change Calendar
+  function changeCalendar() {
+    let calendarBody = $('.calendar-body')[0];
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    function checkDirection (){
+      if(touchStartX > touchEndX){
+        date.setMonth(date.getMonth()+1);
+        generateCalendar();
+        setMinDate();
+        $('.calendar-heading > .icon-prev-month').css('opacity','1');
+      }else if(touchStartX < touchEndX){
+        let prevMonth = parseInt($('.calendar-month-years > span.month').html());
+        let nextYear = parseInt($('.calendar-month-years > span.year').html());
+        let presentMonth = new Date().getMonth();
+        let presentYear = new Date().getFullYear();
+        if( prevMonth > (presentMonth + 1) ){
+          date.setMonth(date.getMonth()-1);
+          generateCalendar();
+          setMinDate();
+        }else if (presentYear < nextYear){
+          date.setMonth(date.getMonth() - 1);
+          generateCalendar();
+          setMinDate();
+          $('.calendar-heading > .icon-prev-month').css('opacity','1');
+        }else{
+          generateCalendar();
+          setMinDate();
+          $('.calendar-heading > .icon-prev-month').css('opacity','0.2');
         }
       }
     }
-}
+    calendarBody.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    calendarBody.addEventListener('touchend',e => {
+      touchEndX = e.changedTouches[0].screenX;
+      checkDirection();
+    })
+  };
+  changeCalendar();
 
   // Form Input Click
   $("#input-date").click( function (event){
     $("#input-date").val("");
-    setValueDateInput();
-    fellValueForDateInput();
-    $('.container-calendar').css('display','block');
+    $('.container-calendar').css('visibility','visible');
     $('.calendar-section').slideDown("slow");
     $("#input-date").blur();
+    setValueDateInput();
+    fellValueForDateInput();
     resetCalendar();
     generateCalendar();
     timPicker();
@@ -237,7 +287,7 @@ $(document).ready(function(){
     $('#input-date').val(`${arrDateTime[0]}:${arrDateTime[1]} - ${arrDateTime[2]}  ${arrDateTime[3]} / ${arrDateTime[4]} / ${arrDateTime[5]}`);
     $('.calendar-section').slideUp("slow");
     setTimeout(() => {
-      $('.container-calendar').css('display','none');
+    $('.container-calendar').css('visibility','hidden');
     }, 400);
   });
 
@@ -246,9 +296,9 @@ $(document).ready(function(){
     
     $('.calendar-section').slideUp("slow");
     setTimeout(() => {
-      $('.container-calendar').css('display','none');
+      $('.container-calendar').css('visibility','hidden');
     }, 400);
-  } );
+  });
 
   $('.calendar-section').click( (event) => {
     event.stopPropagation();
@@ -256,7 +306,8 @@ $(document).ready(function(){
 
   // Button Close
   $('.btn-close').click( () => {
-    $('.calendar-section').slideUp("slow",() => {$('.container-calendar').css('display', 'none')});
-  } )
+    $('.calendar-section').slideUp("slow",() => {    $('.container-calendar').css('visibility','hidden');
+  });
+  });
 
 })
