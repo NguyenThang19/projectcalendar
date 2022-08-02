@@ -143,10 +143,10 @@ $(document).ready(function(){
             lineHeight: 30,
             selected: curHour
           }, function (s) {
-            $("#out-put").html(s);
             hours = `${s}`;
             arrDateTime[0] = hours;
             arrValueForDateInPut[0] = hours;
+            $(".example-picker").data("value", s);
             let getContentHours = $(`#example-picker > .picker-scroller > .option:nth(${s})`).html();
             let getElementsHour = $(`#example-picker > .picker-scroller > .option:nth(${s})`);
             let getElementHours = $(`#example-picker > .picker-scroller > .option`);
