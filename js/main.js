@@ -129,7 +129,6 @@ $(document).ready(function(){
 
       // Current hour
       let curHour = new Date().getHours();
-
       // Current Minutes
       let curMinute=new Date().getMinutes();
       setHour();
@@ -144,20 +143,20 @@ $(document).ready(function(){
             lineHeight: 30,
             selected: curHour
           }, function (s) {
+            $("#out-put").html(s);
             hours = `${s}`;
             arrDateTime[0] = hours;
-            $(".example-picker").data("value", s);
+            arrValueForDateInPut[0] = hours;
             let getContentHours = $(`#example-picker > .picker-scroller > .option:nth(${s})`).html();
             let getElementsHour = $(`#example-picker > .picker-scroller > .option:nth(${s})`);
             let getElementHours = $(`#example-picker > .picker-scroller > .option`);
-            if(s === getContentHours){
+             if(s === getContentHours ){
               getElementHours.removeClass('font-style-timepicker');
               getElementHours.removeClass('f-14');
               getElementHours.css('opacity', '0.5');
               getElementsHour.addClass('font-style-timepicker');
               $(`#example-picker .picker-scroller > .option:nth(${s-2})`).addClass('f-14');
             }
-            arrValueForDateInPut[0] = s;
             fellValueForDateInput();
           });    
           
